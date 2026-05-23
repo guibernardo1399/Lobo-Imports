@@ -2,25 +2,42 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/Lobo-Imports/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <meta name="theme-color" content="#050505" />
+
     <!-- Primary SEO Metadata -->
     <title>Lobos Imports | Eletrônicos Premium e Importados em Belém</title>
     <meta name="description" content="Garanta iPhones, MacBooks, Garmins e videogames originais com entrega local segura em Belém e Ananindeua. Parcelamento inteligente em até 18x no cartão." />
     <meta name="keywords" content="iPhone Belém, MacBook Belém, Garmin Belém, PlayStation 5 Belém, Lobos Imports, importados Belém, eletrônicos premium Belém" />
     <meta name="author" content="Lobos Imports" />
-    
+
     <!-- Open Graph / Meta Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Lobos Imports | Eletrônicos Premium e Importados em Belém" />
     <meta property="og:description" content="Garanta seu eletrônico original com entrega local em mãos e teste presencial no ato do recebimento. Parcelemos em até 18x no cartão." />
-    <meta property="og:image" content="/assets/logo_full.png" />
-    <meta property="og:url" content="https://www.instagram.com/lobos.imports/" />
+    <meta property="og:image" content="/Lobo-Imports/assets/logo_full.png" />
+    <meta property="og:url" content="https://guilhermebernardo1399.github.io/Lobo-Imports/" />
 
-    <!-- Google Fonts Preload to prevent CLS -->
+    <!-- Preconnect para Google Fonts (antes de qualquer coisa) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!--
+      Carregamento assíncrono das fontes — NÃO bloqueia a renderização.
+      media="print" faz o browser baixar sem bloquear; o onload troca para "all".
+      Apenas os pesos realmente usados no site (eram 15 pesos, agora são 8).
+    -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap">
+    </noscript>
+
+    <!-- Preload das imagens críticas do Hero (LCP candidates) -->
+    <link rel="preload" as="image" href="/Lobo-Imports/assets/macbook_air_m5.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="/Lobo-Imports/assets/iphone_17_pro_max.jpg">
+    <link rel="preload" as="image" href="/Lobo-Imports/assets/logo_symbol.png">
   </head>
   <body class="bg-dark-deep text-premium-white antialiased">
     <div id="root"></div>

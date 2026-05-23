@@ -48,11 +48,14 @@ export const Navbar: React.FC = () => {
         >
           {/* Logo Brand */}
           <a href="#" className="flex items-center gap-3 group select-none">
-            <img 
-              src={IMAGES.logoSymbol} 
-              alt="Lobo" 
+            <img
+              src={IMAGES.logoSymbol}
+              alt="Lobo"
               className="h-8 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
               loading="eager"
+              fetchPriority="high"
+              width="40"
+              height="40"
             />
             <div className="flex flex-col">
               <span className="font-display text-base md:text-lg font-extrabold tracking-[0.25em] text-glow-gold text-gold select-none uppercase">

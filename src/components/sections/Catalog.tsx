@@ -93,21 +93,19 @@ export const Catalog: React.FC = () => {
 
         {/* Dynamic Asymmetric Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence>
             {filteredProducts.map((product, index) => {
-              // Asymmetric sizing/alignment styling based on grid placement
               const isEven = index % 2 === 0;
               const hoverEffect = isEven ? "hover:-translate-y-2" : "hover:translate-y-[-8px]";
 
               return (
                 <motion.div
                   key={product.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  className={`group relative bg-dark-card border border-white/5 p-6 flex flex-col justify-between transition-all duration-500 overflow-hidden ${hoverEffect} hover:border-gold/30 hover:gold-glow`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className={`group relative bg-dark-card border border-white/5 p-6 flex flex-col justify-between transition-[transform,border-color,box-shadow] duration-300 overflow-hidden ${hoverEffect} hover:border-gold/30 hover:gold-glow`}
                 >
                   {/* Subtle Background wolf graphic on card hover */}
                   <div className="absolute -bottom-8 -right-8 w-32 h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none select-none">

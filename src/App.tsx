@@ -52,12 +52,14 @@ const App: React.FC = () => {
 
       {/* Structured Sections */}
       <Navbar />
-      <Hero />
-      <Catalog />
-      <Benefits />
-      <SocialProof />
-      <HowItWorks />
-      <FAQ />
+      <main>
+        <Hero />
+        <Catalog />
+        <Benefits />
+        <SocialProof />
+        <HowItWorks />
+        <FAQ />
+      </main>
       <Footer />
     </div>
   );

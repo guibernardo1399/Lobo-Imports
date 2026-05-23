@@ -13,27 +13,33 @@ export const FAQ: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const elements = gsap.utils.toArray('.faq-reveal');
-      elements.forEach((el: any) => {
-        gsap.fromTo(el, 
-          { y: 20, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 95%',
-              toggleActions: 'play none none none',
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out'
-          }
-        );
-      });
-    }, containerRef);
+    const mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const elements = gsap.utils.toArray('.faq-reveal');
+        elements.forEach((el: any) => {
+          gsap.fromTo(el,
+            { y: 20, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 82%',
+                toggleActions: 'play none none none',
+              },
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out'
+            }
+          );
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   const faqs: FAQItem[] = [
@@ -66,7 +72,7 @@ export const FAQ: React.FC = () => {
       className="relative w-full bg-dark-deep py-24 px-6 md:px-12 overflow-hidden border-t border-white/5"
     >
       {/* Decorative ambient glow */}
-      <div className="absolute top-10 left-0 w-[40vw] h-[40vw] rounded-full bg-gold/2 blur-[120px] pointer-events-none" />
+      <div className="hidden md:block absolute top-10 left-0 w-[40vw] h-[40vw] rounded-full bg-gold/2 blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto w-full">
         

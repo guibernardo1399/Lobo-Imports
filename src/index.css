@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -115,6 +113,18 @@
     .will-change-transform-opacity {
       will-change: transform, opacity;
     }
+  }
+}
+
+/* Skip rendering of off-screen sections on mobile — biggest scroll perf gain */
+@media (max-width: 767px) {
+  #catalog,
+  #benefits,
+  #social-proof,
+  #how-it-works,
+  #faq {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 700px;
   }
 }
 

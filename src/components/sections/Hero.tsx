@@ -88,14 +88,16 @@ export const Hero: React.FC = () => {
       <div className="hero-glow hidden md:block absolute top-1/4 left-1/4 w-[35vw] h-[35vw] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
       <div className="hero-glow hidden md:block absolute bottom-10 right-1/4 w-[45vw] h-[45vw] rounded-full bg-gold/3 blur-[160px] pointer-events-none" />
       
-      {/* Massive Floating 3D Brand Watermark in the background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-[50vw] opacity-[0.03] blur-[1px] pointer-events-none select-none z-0">
-        <img 
-          src={IMAGES.logoFull} 
-          alt="" 
-          className="w-full h-auto object-contain md:animate-[float_8s_ease-in-out_infinite]"
-          loading="eager"
+      {/* Massive Floating 3D Brand Watermark in the background — hidden on mobile (794KB PNG) */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-[50vw] opacity-[0.03] blur-[1px] pointer-events-none select-none z-0">
+        <img
+          src={IMAGES.logoFull}
+          alt=""
+          className="w-full h-auto object-contain animate-[float_8s_ease-in-out_infinite]"
+          loading="lazy"
           decoding="async"
+          width="960"
+          height="300"
         />
       </div>
 
@@ -206,15 +208,18 @@ export const Hero: React.FC = () => {
           <div className="relative w-[320px] sm:w-[380px] h-[400px] flex items-center justify-center">
             
             {/* Main Product image - MacBook Air M5 (Premium layout) */}
-            <div className="stack-item absolute top-0 -left-6 z-10 w-[240px] sm:w-[280px] bg-dark-card border border-white/10 p-2.5 gold-glow transition-transform duration-500 hover:scale-105 select-none rounded-2xl">
+            <div className="stack-item absolute top-0 left-0 sm:-left-6 z-10 w-[240px] sm:w-[280px] bg-dark-card border border-white/10 p-2.5 gold-glow transition-transform duration-500 hover:scale-105 select-none rounded-2xl">
               <div className="w-full h-[150px] sm:h-[180px] overflow-hidden rounded-xl bg-white p-3">
                 <picture>
-                  <img 
-                    src={IMAGES.macbookAirM5} 
+                  <img
+                    src={IMAGES.macbookAirM5}
                     alt="MacBook Air M5"
-                    className="w-full h-full object-contain scale-[1.06] grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-contain scale-[1.06]"
                     loading="eager"
                     decoding="async"
+                    fetchPriority="high"
+                    width="500"
+                    height="350"
                   />
                 </picture>
               </div>
@@ -225,15 +230,18 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Accent Stack: iPhone 17 Pro Max actual photo representation */}
-            <div className="stack-item absolute bottom-4 -right-6 z-20 w-[180px] sm:w-[220px] bg-dark-card border border-gold/20 p-2 gold-glow transition-transform duration-500 hover:scale-105 select-none rounded-2xl">
+            <div className="stack-item absolute bottom-4 right-0 sm:-right-6 z-20 w-[180px] sm:w-[220px] bg-dark-card border border-gold/20 p-2 gold-glow transition-transform duration-500 hover:scale-105 select-none rounded-2xl">
               <div className="w-full h-[180px] sm:h-[220px] overflow-hidden rounded-xl bg-white p-3">
                 <picture>
-                  <img 
-                    src={IMAGES.iphone17ProMax} 
+                  <img
+                    src={IMAGES.iphone17ProMax}
                     alt="iPhone 17 Pro Max"
                     className="w-full h-full object-contain scale-[1.06]"
                     loading="eager"
                     decoding="async"
+                    fetchPriority="high"
+                    width="500"
+                    height="600"
                   />
                 </picture>
               </div>
@@ -251,7 +259,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Sutil Decorative Watermark Logo overlay at the background of stack */}
-            <div className="stack-item absolute -bottom-12 -left-12 z-0 opacity-10 select-none pointer-events-none">
+            <div className="stack-item hidden sm:block absolute -bottom-12 -left-12 z-0 opacity-10 select-none pointer-events-none">
               <img 
                 src={IMAGES.logoSymbol} 
                 alt="Lobos Imports emblem background" 
