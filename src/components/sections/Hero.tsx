@@ -11,65 +11,72 @@ export const Hero: React.FC = () => {
   const rightColRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Create entrance timeline
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    const mm = gsap.matchMedia();
 
-      // Animate background elements first
-      tl.from('.hero-glow', {
-        opacity: 0,
-        scale: 0.6,
-        duration: 2,
-        stagger: 0.3
-      });
+    mm.add('(max-width: 767px)', () => {
+      const pctEl = document.getElementById('hero-pct-counter');
+      const hrsEl = document.getElementById('hero-hrs-counter');
+      if (pctEl) pctEl.innerText = '100';
+      if (hrsEl) hrsEl.innerText = '2';
+    });
 
-      // Animate headline with mask-up reveal
-      if (headlineRef.current) {
-        const chars = headlineRef.current.querySelectorAll('.reveal-line');
-        tl.from(chars, {
-          y: '100%',
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+        tl.from('.hero-glow', {
           opacity: 0,
-          duration: 1.4,
-          stagger: 0.1,
-        }, '-=1.6');
-      }
+          scale: 0.6,
+          duration: 2,
+          stagger: 0.3
+        });
 
-      // Animate subheadline and buttons
-      tl.from('.hero-reveal', {
-        y: 30,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.15
-      }, '-=1.0');
-
-      // Animate right stack (MacBook/iPhone visuals)
-      if (rightColRef.current) {
-        tl.from(rightColRef.current.querySelectorAll('.stack-item'), {
-          x: 60,
-          scale: 0.95,
-          opacity: 0,
-          duration: 1.6,
-          stagger: 0.2
-        }, '-=1.2');
-      }
-
-      // Animate stats numbers counting up dynamically
-      const countTargets = { pct: 0, hrs: 0 };
-      tl.to(countTargets, {
-        pct: 100,
-        hrs: 2,
-        duration: 2.2,
-        ease: 'power3.out',
-        onUpdate: () => {
-          const pctEl = document.getElementById('hero-pct-counter');
-          const hrsEl = document.getElementById('hero-hrs-counter');
-          if (pctEl) pctEl.innerText = Math.round(countTargets.pct).toString();
-          if (hrsEl) hrsEl.innerText = Math.round(countTargets.hrs).toString();
+        if (headlineRef.current) {
+          const chars = headlineRef.current.querySelectorAll('.reveal-line');
+          tl.from(chars, {
+            y: '100%',
+            opacity: 0,
+            duration: 1.4,
+            stagger: 0.1,
+          }, '-=1.6');
         }
-      }, '-=1.4');
-    }, containerRef);
 
-    return () => ctx.revert(); // GSAP cleanup on unmount
+        tl.from('.hero-reveal', {
+          y: 30,
+          opacity: 0,
+          duration: 1.2,
+          stagger: 0.15
+        }, '-=1.0');
+
+        if (rightColRef.current) {
+          tl.from(rightColRef.current.querySelectorAll('.stack-item'), {
+            x: 60,
+            scale: 0.95,
+            opacity: 0,
+            duration: 1.6,
+            stagger: 0.2
+          }, '-=1.2');
+        }
+
+        const countTargets = { pct: 0, hrs: 0 };
+        tl.to(countTargets, {
+          pct: 100,
+          hrs: 2,
+          duration: 2.2,
+          ease: 'power3.out',
+          onUpdate: () => {
+            const pctEl = document.getElementById('hero-pct-counter');
+            const hrsEl = document.getElementById('hero-hrs-counter');
+            if (pctEl) pctEl.innerText = Math.round(countTargets.pct).toString();
+            if (hrsEl) hrsEl.innerText = Math.round(countTargets.hrs).toString();
+          }
+        }, '-=1.4');
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -77,16 +84,16 @@ export const Hero: React.FC = () => {
       ref={containerRef}
       className="relative min-h-screen w-full bg-dark-deep pt-32 pb-20 px-6 md:px-12 flex items-center overflow-hidden"
     >
-      {/* Dynamic Golden Ambient Lights (No generic purple blobs!) */}
-      <div className="hero-glow absolute top-1/4 left-1/4 w-[35vw] h-[35vw] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
-      <div className="hero-glow absolute bottom-10 right-1/4 w-[45vw] h-[45vw] rounded-full bg-gold/3 blur-[160px] pointer-events-none" />
+      {/* Dynamic Golden Ambient Lights */}
+      <div className="hero-glow hidden md:block absolute top-1/4 left-1/4 w-[35vw] h-[35vw] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
+      <div className="hero-glow hidden md:block absolute bottom-10 right-1/4 w-[45vw] h-[45vw] rounded-full bg-gold/3 blur-[160px] pointer-events-none" />
       
       {/* Massive Floating 3D Brand Watermark in the background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-[50vw] opacity-[0.03] blur-[1px] pointer-events-none select-none z-0">
         <img 
           src={IMAGES.logoFull} 
           alt="" 
-          className="w-full h-auto object-contain animate-[float_8s_ease-in-out_infinite]"
+          className="w-full h-auto object-contain md:animate-[float_8s_ease-in-out_infinite]"
           loading="eager"
           decoding="async"
         />

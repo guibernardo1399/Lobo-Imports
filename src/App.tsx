@@ -42,7 +42,7 @@ const App: React.FC = () => {
         href="https://wa.me/5591981684652?text=Ol%C3%A1%21+Gostaria+de+falar+com+um+consultor+sobre+o+estoque+da+Lobos+Imports."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 p-4 bg-gold hover:bg-gold-light text-dark-deep rounded-full shadow-2xl transition-all duration-300 hover:scale-110 gold-glow hover:gold-glow-intense flex items-center justify-center animate-[float_6s_ease-in-out_infinite]"
+        className="fixed bottom-6 right-6 z-40 p-4 bg-gold hover:bg-gold-light text-dark-deep rounded-full shadow-2xl transition-all duration-300 hover:scale-110 gold-glow hover:gold-glow-intense flex items-center justify-center md:animate-[float_6s_ease-in-out_infinite]"
         aria-label="Chamar no WhatsApp"
       >
         {/* Pulsing visual outer rings */}

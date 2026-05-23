@@ -23,24 +23,29 @@ export const Catalog: React.FC = () => {
     : productsData.filter(p => p.category === activeCategory);
 
   useEffect(() => {
-    // Scroll reveal with ScrollTrigger on title
-    const ctx = gsap.context(() => {
-      gsap.fromTo('.catalog-title-reveal', 
-        { y: 40, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.catalog-title-reveal',
-            start: 'top 85%',
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15
-        }
-      );
-    }, containerRef);
+    const mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        gsap.fromTo('.catalog-title-reveal',
+          { y: 40, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: '.catalog-title-reveal',
+              start: 'top 80%',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.15
+          }
+        );
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -50,7 +55,7 @@ export const Catalog: React.FC = () => {
       className="relative min-h-screen w-full bg-dark-deep py-24 px-6 md:px-12 overflow-hidden border-t border-white/5"
     >
       {/* Absolute Decorative Ambient Glows */}
-      <div className="absolute top-1/2 left-0 w-[40vw] h-[40vw] rounded-full bg-gold/3 blur-[140px] pointer-events-none" />
+      <div className="hidden md:block absolute top-1/2 left-0 w-[40vw] h-[40vw] rounded-full bg-gold/3 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">
         
@@ -87,10 +92,7 @@ export const Catalog: React.FC = () => {
         </div>
 
         {/* Dynamic Asymmetric Products Grid */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product, index) => {
               // Asymmetric sizing/alignment styling based on grid placement
@@ -190,7 +192,6 @@ export const Catalog: React.FC = () => {
 
           {/* Elegant Custom '+ Card' displaying broad inventory scope */}
           <motion.div
-            layout
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -235,7 +236,7 @@ export const Catalog: React.FC = () => {
               </Button>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

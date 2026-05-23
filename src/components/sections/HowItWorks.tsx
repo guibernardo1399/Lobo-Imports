@@ -7,27 +7,33 @@ export const HowItWorks: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const elements = gsap.utils.toArray('.step-card-reveal');
-      elements.forEach((el: any) => {
-        gsap.fromTo(el, 
-          { y: 30, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 96%',
-              toggleActions: 'play none none none',
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: 'power3.out'
-          }
-        );
-      });
-    }, containerRef);
+    const mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const elements = gsap.utils.toArray('.step-card-reveal');
+        elements.forEach((el: any) => {
+          gsap.fromTo(el,
+            { y: 30, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 82%',
+                toggleActions: 'play none none none',
+              },
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: 'power3.out'
+            }
+          );
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   const steps = [
@@ -64,7 +70,7 @@ export const HowItWorks: React.FC = () => {
       className="relative w-full bg-dark-deep py-24 px-6 md:px-12 overflow-hidden border-t border-white/5"
     >
       {/* Decorative Radial Glow */}
-      <div className="absolute top-1/2 right-1/4 w-[30vw] h-[30vw] rounded-full bg-gold/2 blur-[100px] pointer-events-none" />
+      <div className="hidden md:block absolute top-1/2 right-1/4 w-[30vw] h-[30vw] rounded-full bg-gold/2 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">
         

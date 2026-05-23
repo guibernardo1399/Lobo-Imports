@@ -8,27 +8,33 @@ export const SocialProof: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const elements = gsap.utils.toArray('.social-reveal');
-      elements.forEach((el: any) => {
-        gsap.fromTo(el, 
-          { y: 30, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 96%',
-              toggleActions: 'play none none none',
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: 'power3.out'
-          }
-        );
-      });
-    }, containerRef);
+    const mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const elements = gsap.utils.toArray('.social-reveal');
+        elements.forEach((el: any) => {
+          gsap.fromTo(el,
+            { y: 30, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 82%',
+                toggleActions: 'play none none none',
+              },
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: 'power3.out'
+            }
+          );
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   const deliveries = [
@@ -61,7 +67,7 @@ export const SocialProof: React.FC = () => {
       className="relative w-full bg-dark-deep py-24 px-6 md:px-12 overflow-hidden border-t border-white/5"
     >
       {/* Dynamic Gold Radial Glows for premium framing */}
-      <div className="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] rounded-full bg-gold/3 blur-[120px] pointer-events-none" />
+      <div className="hidden md:block absolute top-1/4 left-1/4 w-[30vw] h-[30vw] rounded-full bg-gold/3 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">
         
@@ -143,7 +149,7 @@ export const SocialProof: React.FC = () => {
 
                   {/* Footer status label */}
                   <div className="pt-4 border-t border-white/5 flex items-center gap-2 text-premium-gray">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 md:animate-ping" />
                     <span className="font-body text-[9px] tracking-wider uppercase font-semibold text-emerald-500">
                       Entrega Concluída
                     </span>

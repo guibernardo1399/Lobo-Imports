@@ -1,9 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const Canvas3D: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
 
   useEffect(() => {
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -23,7 +28,7 @@ export const Canvas3D: React.FC = () => {
 
     // Generate points on a sphere
     const points: Point3D[] = [];
-    const numPoints = 120;
+    const numPoints = 80;
     const radius = 100;
 
     for (let i = 0; i < numPoints; i++) {
@@ -96,18 +101,8 @@ export const Canvas3D: React.FC = () => {
         // Draw glowing particle
         ctx.beginPath();
         ctx.arc(proj.x, proj.y, Math.max(0.5, proj.size), 0, Math.PI * 2);
-        
-        // Front points are gold, back points are darker/opaque
         ctx.fillStyle = `rgba(200, 155, 60, ${proj.alpha * 0.85})`;
         ctx.fill();
-        
-        // Add delicate shadow glow to front points
-        if (point.z < 0) {
-          ctx.shadowBlur = 4;
-          ctx.shadowColor = '#C89B3C';
-        } else {
-          ctx.shadowBlur = 0;
-        }
       });
 
       animationFrameId = requestAnimationFrame(render);
@@ -132,9 +127,11 @@ export const Canvas3D: React.FC = () => {
     };
   }, []);
 
+  if (isMobile) return null;
+
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="w-full h-full pointer-events-none select-none max-w-full max-h-full"
       style={{ filter: 'drop-shadow(0 0 15px rgba(200, 155, 60, 0.15))' }}
     />

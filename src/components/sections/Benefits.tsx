@@ -6,27 +6,33 @@ export const Benefits: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const elements = gsap.utils.toArray('.benefit-card-reveal');
-      elements.forEach((el: any) => {
-        gsap.fromTo(el, 
-          { y: 30, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 96%',
-              toggleActions: 'play none none none',
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: 'power3.out'
-          }
-        );
-      });
-    }, containerRef);
+    const mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const elements = gsap.utils.toArray('.benefit-card-reveal');
+        elements.forEach((el: any) => {
+          gsap.fromTo(el,
+            { y: 30, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 82%',
+                toggleActions: 'play none none none',
+              },
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: 'power3.out'
+            }
+          );
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   const benefits = [
@@ -71,7 +77,7 @@ export const Benefits: React.FC = () => {
       className="relative w-full bg-dark-deep py-24 px-6 md:px-12 overflow-hidden border-t border-white/5"
     >
       {/* Decorative Light Glow */}
-      <div className="absolute bottom-0 right-0 w-[35vw] h-[35vw] rounded-full bg-gold/3 blur-[120px] pointer-events-none" />
+      <div className="hidden md:block absolute bottom-0 right-0 w-[35vw] h-[35vw] rounded-full bg-gold/3 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full">
         

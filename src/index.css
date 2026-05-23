@@ -109,7 +109,12 @@
   }
 
   .will-change-transform-opacity {
-    will-change: transform, opacity;
+    will-change: auto;
+  }
+  @media (min-width: 768px) {
+    .will-change-transform-opacity {
+      will-change: transform, opacity;
+    }
   }
 }
 
