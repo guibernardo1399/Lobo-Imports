@@ -15,7 +15,7 @@ export const HowItWorks: React.FC = () => {
           {
             scrollTrigger: {
               trigger: el,
-              start: 'top 88%',
+              start: 'top 96%',
               toggleActions: 'play none none none',
             },
             y: 0,
@@ -90,7 +90,7 @@ export const HowItWorks: React.FC = () => {
           {steps.map((s) => (
             <div
               key={s.num}
-              className="step-card-reveal relative z-10 bg-dark-card border border-white/5 p-8 flex flex-col justify-between group transition-all duration-500 hover:border-gold/20 hover:gold-glow text-left"
+              className="step-card-reveal will-change-transform-opacity relative z-10 bg-dark-card border border-white/5 p-8 flex flex-col justify-between group transition-all duration-500 hover:border-gold/20 hover:gold-glow text-left"
             >
               <div>
                 {/* Number & Icon header */}

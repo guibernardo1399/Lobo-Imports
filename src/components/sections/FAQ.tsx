@@ -14,19 +14,23 @@ export const FAQ: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.faq-reveal', 
-        { y: 30, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.faq-reveal',
-            start: 'top 85%',
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15
-        }
-      );
+      const elements = gsap.utils.toArray('.faq-reveal');
+      elements.forEach((el: any) => {
+        gsap.fromTo(el, 
+          { y: 20, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 95%',
+              toggleActions: 'play none none none',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out'
+          }
+        );
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -87,7 +91,7 @@ export const FAQ: React.FC = () => {
             return (
               <div
                 key={i}
-                className="faq-reveal bg-dark-card border border-white/5 hover:border-gold/15 transition-all duration-300 overflow-hidden"
+                className="faq-reveal will-change-transform-opacity bg-dark-card border border-white/5 hover:border-gold/15 transition-all duration-300 overflow-hidden"
               >
                 {/* Accordion Header row */}
                 <button

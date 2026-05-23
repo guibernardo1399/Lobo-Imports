@@ -53,26 +53,41 @@
     font-family: 'Inter Tight', sans-serif;
   }
 
-  /* Premium Glassmorphism */
+  /* Premium Glassmorphism (Optimized: disabled heavy backdrop-filter on mobile to ensure 60fps scroll) */
   .glass-card {
-    background: rgba(17, 17, 17, 0.4);
-    backdrop-filter: blur(16px) saturate(120%);
-    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    background: rgba(17, 17, 17, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  @media (min-width: 768px) {
+    .glass-card {
+      background: rgba(17, 17, 17, 0.4);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+    }
   }
 
   .glass-card-gold {
-    background: rgba(17, 17, 17, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(17, 17, 17, 0.96);
     border: 1px solid rgba(200, 155, 60, 0.15);
+  }
+  @media (min-width: 768px) {
+    .glass-card-gold {
+      background: rgba(17, 17, 17, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
   }
 
   .glass-nav {
-    background: rgba(5, 5, 5, 0.65);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(5, 5, 5, 0.98);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+  @media (min-width: 768px) {
+    .glass-nav {
+      background: rgba(5, 5, 5, 0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
   }
 
   /* Subtle Gold Glows */
@@ -91,6 +106,10 @@
   /* Mask revealed elements */
   .reveal-mask {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .will-change-transform-opacity {
+    will-change: transform, opacity;
   }
 }
 

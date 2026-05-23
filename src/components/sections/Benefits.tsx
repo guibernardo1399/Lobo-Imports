@@ -14,7 +14,7 @@ export const Benefits: React.FC = () => {
           {
             scrollTrigger: {
               trigger: el,
-              start: 'top 88%',
+              start: 'top 96%',
               toggleActions: 'play none none none',
             },
             y: 0,
@@ -102,7 +102,7 @@ export const Benefits: React.FC = () => {
             return (
               <div
                 key={b.num}
-                className={`benefit-card-reveal relative bg-dark-card border border-white/5 p-8 md:p-10 flex flex-col justify-between group transition-all duration-500 hover:border-gold/30 hover:gold-glow ${offsetStyle}`}
+                className={`benefit-card-reveal will-change-transform-opacity relative bg-dark-card border border-white/5 p-8 md:p-10 flex flex-col justify-between group transition-all duration-500 hover:border-gold/30 hover:gold-glow ${offsetStyle}`}
               >
                 {/* Massive Decorative Number behind content */}
                 <span className="absolute top-2 right-4 font-display text-7xl md:text-8xl font-black text-white/[0.02] group-hover:text-gold/[0.04] transition-colors duration-500 select-none">

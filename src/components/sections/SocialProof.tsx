@@ -16,7 +16,7 @@ export const SocialProof: React.FC = () => {
           {
             scrollTrigger: {
               trigger: el,
-              start: 'top 88%',
+              start: 'top 96%',
               toggleActions: 'play none none none',
             },
             y: 0,
@@ -87,7 +87,7 @@ export const SocialProof: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`social-reveal flex flex-col md:flex-row bg-dark-card border border-white/5 p-6 md:p-8 gap-6 md:gap-8 group transition-all duration-500 hover:border-gold/20 hover:gold-glow ${sideMargin}`}
+                className={`social-reveal will-change-transform-opacity flex flex-col md:flex-row bg-dark-card border border-white/5 p-6 md:p-8 gap-6 md:gap-8 group transition-all duration-500 hover:border-gold/20 hover:gold-glow ${sideMargin}`}
               >
                 {/* Visual Image container with thick premium drop-shadow and gold metallic line */}
                 <div className="w-full md:w-[220px] h-[260px] flex-shrink-0 overflow-hidden bg-black border border-white/10 relative shadow-2xl select-none group-hover:border-gold/30 transition-all duration-500">
@@ -156,7 +156,7 @@ export const SocialProof: React.FC = () => {
         </div>
 
         {/* Security / Anti-Fraud CTA Callout banner - Integrando John Anderson com luxo */}
-        <div className="social-reveal max-w-4xl mx-auto glass-card-gold p-8 md:p-10 mt-16 text-left relative overflow-hidden">
+        <div className="social-reveal will-change-transform-opacity max-w-4xl mx-auto glass-card-gold p-8 md:p-10 mt-16 text-left relative overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
             {/* Left side: Premium photo of John Anderson with luxury styling */}
