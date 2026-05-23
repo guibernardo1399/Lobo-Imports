@@ -105,10 +105,10 @@ export const Catalog: React.FC = () => {
               return (
                 <motion.div
                   key={product.id}
-                  initial={isMobile ? false : { opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={isMobile ? undefined : { opacity: 0 }}
-                  transition={{ duration: 0.25 }}
+                  initial={isMobile ? { opacity: 0, y: 16 } : { opacity: 0 }}
+                  animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                  exit={isMobile ? { opacity: 0, y: -8 } : { opacity: 0 }}
+                  transition={{ duration: isMobile ? 0.32 : 0.25, ease: [0.16, 1, 0.3, 1] }}
                   className={cardClass}
                 >
                   {/* Subtle Background wolf graphic on card hover */}
@@ -136,7 +136,7 @@ export const Catalog: React.FC = () => {
                           src={product.imageUrl} 
                           alt={product.name} 
                           className="w-full h-full object-contain scale-[1.06] transition-transform duration-700 group-hover:scale-[1.12]"
-                          loading="lazy"
+                          loading={index < 2 ? 'eager' : 'lazy'}
                           decoding="async"
                           width="640"
                           height="640"
@@ -194,9 +194,9 @@ export const Catalog: React.FC = () => {
 
           {/* Elegant Custom '+ Card' displaying broad inventory scope */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.95, y: isMobile ? 16 : 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="group relative bg-dark-card/30 border border-dashed border-gold/30 p-6 flex flex-col justify-between transition-all duration-500 hover:border-gold hover:gold-glow min-h-[480px] text-left"
           >
             {/* Gold watermark icon background */}

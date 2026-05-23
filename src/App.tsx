@@ -16,7 +16,64 @@ import { ScrollTrigger } from './lib/gsap-setup';
 
 const App: React.FC = () => {
   useEffect(() => {
-    if (window.matchMedia('(max-width: 767px)').matches) return;
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      const revealSelectors = [
+        '.hero-reveal',
+        '.reveal-line',
+        '.stack-item',
+        '.catalog-title-reveal',
+        '.benefit-card-reveal',
+        '.social-reveal',
+        '.step-card-reveal',
+        '.faq-reveal',
+        '.footer-reveal'
+      ].join(',');
+
+      const observed = new WeakSet<Element>();
+      let observer: IntersectionObserver | null = null;
+
+      const revealNow = (el: Element) => {
+        el.classList.add('mobile-scroll-reveal', 'is-visible');
+      };
+
+      if ('IntersectionObserver' in window) {
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer?.unobserve(entry.target);
+          });
+        }, {
+          rootMargin: '0px 0px -8% 0px',
+          threshold: 0.12
+        });
+      }
+
+      const bindReveals = () => {
+        document.querySelectorAll(revealSelectors).forEach((el, index) => {
+          if (observed.has(el)) return;
+          observed.add(el);
+          el.classList.add('mobile-scroll-reveal');
+          (el as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 70}ms`);
+
+          if (!observer) {
+            revealNow(el);
+            return;
+          }
+
+          observer.observe(el);
+        });
+      };
+
+      bindReveals();
+      const mutations = new MutationObserver(bindReveals);
+      mutations.observe(document.body, { childList: true, subtree: true });
+
+      return () => {
+        observer?.disconnect();
+        mutations.disconnect();
+      };
+    }
 
     const refresh = () => ScrollTrigger.refresh();
     if ('requestIdleCallback' in window) {
