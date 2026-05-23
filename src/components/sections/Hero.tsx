@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MessageSquare, ShieldCheck, MapPin, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Canvas3D } from '../effects/Canvas3D';
@@ -9,6 +9,17 @@ export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
+  const [showWatermark, setShowWatermark] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => setShowWatermark(true));
+      } else {
+        setTimeout(() => setShowWatermark(true), 200);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -16,8 +27,8 @@ export const Hero: React.FC = () => {
     mm.add('(max-width: 767px)', () => {
       const pctEl = document.getElementById('hero-pct-counter');
       const hrsEl = document.getElementById('hero-hrs-counter');
-      if (pctEl) pctEl.innerText = '100';
-      if (hrsEl) hrsEl.innerText = '2';
+      if (pctEl) pctEl.textContent = '100';
+      if (hrsEl) hrsEl.textContent = '2';
     });
 
     mm.add('(min-width: 768px)', () => {
@@ -67,8 +78,8 @@ export const Hero: React.FC = () => {
           onUpdate: () => {
             const pctEl = document.getElementById('hero-pct-counter');
             const hrsEl = document.getElementById('hero-hrs-counter');
-            if (pctEl) pctEl.innerText = Math.round(countTargets.pct).toString();
-            if (hrsEl) hrsEl.innerText = Math.round(countTargets.hrs).toString();
+            if (pctEl) pctEl.textContent = Math.round(countTargets.pct).toString();
+            if (hrsEl) hrsEl.textContent = Math.round(countTargets.hrs).toString();
           }
         }, '-=1.4');
       }, containerRef);
@@ -88,18 +99,20 @@ export const Hero: React.FC = () => {
       <div className="hero-glow hidden md:block absolute top-1/4 left-1/4 w-[35vw] h-[35vw] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
       <div className="hero-glow hidden md:block absolute bottom-10 right-1/4 w-[45vw] h-[45vw] rounded-full bg-gold/3 blur-[160px] pointer-events-none" />
       
-      {/* Massive Floating 3D Brand Watermark in the background — hidden on mobile (794KB PNG) */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-[50vw] opacity-[0.03] blur-[1px] pointer-events-none select-none z-0">
-        <img
-          src={IMAGES.logoFull}
-          alt=""
-          className="w-full h-auto object-contain animate-[float_8s_ease-in-out_infinite]"
-          loading="lazy"
-          decoding="async"
-          width="960"
-          height="300"
-        />
-      </div>
+      {/* Massive Floating 3D Brand Watermark — only rendered on desktop after idle (793KB PNG never fetched on mobile) */}
+      {showWatermark && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-[50vw] opacity-[0.03] blur-[1px] pointer-events-none select-none z-0">
+          <img
+            src={IMAGES.logoFull}
+            alt=""
+            className="w-full h-auto object-contain animate-[float_8s_ease-in-out_infinite]"
+            loading="lazy"
+            decoding="async"
+            width="960"
+            height="300"
+          />
+        </div>
+      )}
 
       {/* Decorative vertical golden line */}
       <div className="absolute left-6 md:left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-gold/15 to-transparent pointer-events-none" />
@@ -223,9 +236,9 @@ export const Hero: React.FC = () => {
                   />
                 </picture>
               </div>
-              <div className="mt-3 flex justify-between items-center px-1">
-                <span className="font-display text-[10px] tracking-widest text-premium-white font-semibold uppercase">MacBook Air M5</span>
-                <span className="font-body text-xs text-gold font-bold">Sob Consulta</span>
+              <div className="mt-3 flex justify-between items-center px-1 gap-2">
+                <span className="font-display text-[10px] tracking-widest text-premium-white font-semibold uppercase truncate min-w-0">MacBook Air M5</span>
+                <span className="font-body text-xs text-gold font-bold shrink-0 whitespace-nowrap">Sob Consulta</span>
               </div>
             </div>
 
@@ -245,7 +258,7 @@ export const Hero: React.FC = () => {
                   />
                 </picture>
               </div>
-              <div className="mt-2.5 flex justify-between items-center px-1">
+              <div className="mt-2.5 flex flex-col gap-0.5 px-1">
                 <span className="font-display text-[9px] tracking-widest text-premium-white font-semibold uppercase">iPhone 17 Pro Max</span>
                 <span className="font-body text-xs text-gold font-bold">Sob Consulta</span>
               </div>

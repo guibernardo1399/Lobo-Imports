@@ -16,30 +16,18 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Lobos Imports | Eletrônicos Premium e Importados em Belém" />
     <meta property="og:description" content="Garanta seu eletrônico original com entrega local em mãos e teste presencial no ato do recebimento. Parcelemos em até 18x no cartão." />
-    <meta property="og:image" content="/Lobo-Imports/assets/logo_full.png" />
+    <meta property="og:image" content="/Lobo-Imports/assets/logo_symbol.png" />
     <meta property="og:url" content="https://guilhermebernardo1399.github.io/Lobo-Imports/" />
 
-    <!-- Preconnect para Google Fonts (antes de qualquer coisa) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!--
-      Carregamento assíncrono das fontes — NÃO bloqueia a renderização.
-      media="print" faz o browser baixar sem bloquear; o onload troca para "all".
-      Apenas os pesos realmente usados no site (eram 15 pesos, agora são 8).
-    -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap">
-    </noscript>
+    <!-- Preload das fontes self-hosted — sem dependência de CDN externo -->
+    <link rel="preload" as="font" type="font/woff2" href="/Lobo-Imports/fonts/inter-tight-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/Lobo-Imports/fonts/montserrat-latin.woff2" crossorigin>
 
     <!-- Preload das imagens críticas do Hero (LCP candidates) -->
     <link rel="preload" as="image" href="/Lobo-Imports/assets/macbook_air_m5.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="/Lobo-Imports/assets/iphone_17_pro_max.jpg">
-    <link rel="preload" as="image" href="/Lobo-Imports/assets/logo_symbol.png">
-    <script type="module" crossorigin src="/Lobo-Imports/assets/index-C_4B5ofb.js"></script>
-    <link rel="stylesheet" crossorigin href="/Lobo-Imports/assets/index-Cd6VpYJN.css">
+    <script type="module" crossorigin src="/Lobo-Imports/assets/index-kx-C3HPK.js"></script>
+    <link rel="stylesheet" crossorigin href="/Lobo-Imports/assets/index-DGHPgg1H.css">
   </head>
   <body class="bg-dark-deep text-premium-white antialiased">
     <div id="root"></div>

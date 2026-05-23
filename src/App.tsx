@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
-import { CustomCursor } from './components/effects/CustomCursor';
+import React, { useEffect, Suspense, lazy } from 'react';
+const CustomCursor = lazy(() =>
+  import('./components/effects/CustomCursor').then(m => ({ default: m.CustomCursor }))
+);
 import { NoiseOverlay } from './components/effects/NoiseOverlay';
 import { Navbar } from './components/sections/Navbar';
 import { Hero } from './components/sections/Hero';
@@ -16,23 +18,20 @@ const App: React.FC = () => {
   useEffect(() => {
     if (window.matchMedia('(max-width: 767px)').matches) return;
 
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 800);
-
-    const handleLoad = () => { ScrollTrigger.refresh(); };
-    window.addEventListener('load', handleLoad);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('load', handleLoad);
-    };
+    const refresh = () => ScrollTrigger.refresh();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(refresh, { timeout: 1000 });
+    } else {
+      setTimeout(refresh, 800);
+    }
   }, []);
 
   return (
     <div className="relative min-h-screen w-full bg-dark-deep font-body selection:bg-gold selection:text-dark-deep">
       {/* Visual Effects layer */}
-      <CustomCursor />
+      <Suspense fallback={null}>
+        <CustomCursor />
+      </Suspense>
       <NoiseOverlay />
 
       {/* Floating Premium WhatsApp button (Gold pulse effect) */}

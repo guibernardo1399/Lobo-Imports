@@ -113,9 +113,11 @@ export const Canvas3D: React.FC = () => {
     // Responsive resize handler
     const handleResize = () => {
       if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      width = canvas.width = rect.width;
-      height = canvas.height = rect.height;
+      requestAnimationFrame(() => {
+        const rect = canvas.getBoundingClientRect();
+        width = canvas.width = rect.width;
+        height = canvas.height = rect.height;
+      });
     };
 
     window.addEventListener('resize', handleResize);
