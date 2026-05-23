@@ -143,12 +143,21 @@
   }
 
   @media (max-width: 767px) {
+    .hero-reveal,
+    .reveal-line,
+    .stack-item,
+    .catalog-title-reveal,
+    .benefit-card-reveal,
+    .social-reveal,
+    .step-card-reveal,
+    .faq-reveal,
+    .footer-reveal,
     .mobile-scroll-reveal {
       opacity: 0;
       transform: translate3d(0, 22px, 0) scale(0.985);
       transition:
-        opacity 620ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-        transform 620ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+        opacity 860ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+        transform 860ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
       will-change: opacity, transform;
     }
 
@@ -158,12 +167,20 @@
       will-change: auto;
     }
 
+    .reveal-line {
+      transform: translate3d(0, 105%, 0);
+    }
+
     .reveal-line.mobile-scroll-reveal {
       transform: translate3d(0, 105%, 0);
     }
 
     .reveal-line.mobile-scroll-reveal.is-visible {
       transform: translate3d(0, 0, 0);
+    }
+
+    .stack-item {
+      transform: translate3d(22px, 0, 0) scale(0.96);
     }
 
     .stack-item.mobile-scroll-reveal {
@@ -183,8 +200,17 @@
   }
 
   @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+    .hero-reveal,
+    .catalog-title-reveal,
+    .benefit-card-reveal,
+    .social-reveal,
+    .step-card-reveal,
+    .faq-reveal,
+    .footer-reveal,
     .mobile-scroll-reveal,
+    .reveal-line,
     .reveal-line.mobile-scroll-reveal,
+    .stack-item,
     .stack-item.mobile-scroll-reveal {
       opacity: 1;
       transform: none;

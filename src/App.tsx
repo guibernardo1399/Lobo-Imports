@@ -54,7 +54,24 @@ const App: React.FC = () => {
           if (observed.has(el)) return;
           observed.add(el);
           el.classList.add('mobile-scroll-reveal');
-          (el as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 70}ms`);
+
+          const element = el as HTMLElement;
+          const isHeroElement =
+            element.classList.contains('hero-reveal') ||
+            element.classList.contains('reveal-line') ||
+            element.classList.contains('stack-item');
+          const delay = isHeroElement
+            ? Math.min(index, 10) * 130
+            : Math.min(index % 8, 7) * 95;
+
+          element.style.setProperty('--reveal-delay', `${delay}ms`);
+
+          if (isHeroElement) {
+            requestAnimationFrame(() => {
+              element.classList.add('is-visible');
+            });
+            return;
+          }
 
           if (!observer) {
             revealNow(el);
