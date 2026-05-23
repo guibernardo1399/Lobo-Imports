@@ -7,19 +7,23 @@ export const Benefits: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.benefit-card-reveal', 
-        { y: 50, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.benefit-card-reveal',
-            start: 'top 85%',
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.2
-        }
-      );
+      const elements = gsap.utils.toArray('.benefit-card-reveal');
+      elements.forEach((el: any) => {
+        gsap.fromTo(el, 
+          { y: 30, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out'
+          }
+        );
+      });
     }, containerRef);
 
     return () => ctx.revert();

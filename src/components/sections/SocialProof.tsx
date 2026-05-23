@@ -9,19 +9,23 @@ export const SocialProof: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.social-reveal', 
-        { y: 40, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.social-reveal',
-            start: 'top 85%',
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.15
-        }
-      );
+      const elements = gsap.utils.toArray('.social-reveal');
+      elements.forEach((el: any) => {
+        gsap.fromTo(el, 
+          { y: 30, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out'
+          }
+        );
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -93,6 +97,7 @@ export const SocialProof: React.FC = () => {
                       alt={`Entrega Lobos Imports`} 
                       className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      decoding="async"
                       width="220"
                       height="260"
                     />
@@ -163,6 +168,7 @@ export const SocialProof: React.FC = () => {
                     alt="John Anderson — Fundador" 
                     className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-500"
                     loading="lazy"
+                    decoding="async"
                     width="160"
                     height="190"
                   />

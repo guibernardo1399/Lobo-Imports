@@ -133,6 +133,7 @@ export const Catalog: React.FC = () => {
                           alt={product.name} 
                           className="w-full h-full object-contain scale-[1.06] transition-transform duration-700 group-hover:scale-[1.12]"
                           loading="lazy"
+                          decoding="async"
                           width="500"
                           height="500"
                         />

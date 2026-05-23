@@ -87,7 +87,8 @@ export const Hero: React.FC = () => {
           src={IMAGES.logoFull} 
           alt="" 
           className="w-full h-auto object-contain animate-[float_8s_ease-in-out_infinite]"
-          loading="lazy"
+          loading="eager"
+          decoding="async"
         />
       </div>
 
@@ -206,6 +207,7 @@ export const Hero: React.FC = () => {
                     alt="MacBook Air M5"
                     className="w-full h-full object-contain scale-[1.06] grayscale-[20%] hover:grayscale-0 transition-all duration-500"
                     loading="eager"
+                    decoding="async"
                   />
                 </picture>
               </div>
@@ -224,6 +226,7 @@ export const Hero: React.FC = () => {
                     alt="iPhone 17 Pro Max"
                     className="w-full h-full object-contain scale-[1.06]"
                     loading="eager"
+                    decoding="async"
                   />
                 </picture>
               </div>
