@@ -230,9 +230,8 @@ export const Hero: React.FC = () => {
                     className="w-full h-full object-contain scale-[1.06]"
                     loading="eager"
                     decoding="async"
-                    fetchPriority="high"
-                    width="500"
-                    height="350"
+                    width="640"
+                    height="640"
                   />
                 </picture>
               </div>
@@ -252,9 +251,8 @@ export const Hero: React.FC = () => {
                     className="w-full h-full object-contain scale-[1.06]"
                     loading="eager"
                     decoding="async"
-                    fetchPriority="high"
-                    width="500"
-                    height="600"
+                    width="640"
+                    height="640"
                   />
                 </picture>
               </div>

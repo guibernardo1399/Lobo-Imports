@@ -10,8 +10,8 @@ export const Benefits: React.FC = () => {
 
     mm.add('(min-width: 768px)', () => {
       const ctx = gsap.context(() => {
-        const elements = gsap.utils.toArray('.benefit-card-reveal');
-        elements.forEach((el: any) => {
+        const elements = gsap.utils.toArray<HTMLElement>('.benefit-card-reveal');
+        elements.forEach((el) => {
           gsap.fromTo(el,
             { y: 30, opacity: 0 },
             {

@@ -17,8 +17,8 @@ export const FAQ: React.FC = () => {
 
     mm.add('(min-width: 768px)', () => {
       const ctx = gsap.context(() => {
-        const elements = gsap.utils.toArray('.faq-reveal');
-        elements.forEach((el: any) => {
+        const elements = gsap.utils.toArray<HTMLElement>('.faq-reveal');
+        elements.forEach((el) => {
           gsap.fromTo(el,
             { y: 20, opacity: 0 },
             {

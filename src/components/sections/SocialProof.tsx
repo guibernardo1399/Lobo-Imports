@@ -12,8 +12,8 @@ export const SocialProof: React.FC = () => {
 
     mm.add('(min-width: 768px)', () => {
       const ctx = gsap.context(() => {
-        const elements = gsap.utils.toArray('.social-reveal');
-        elements.forEach((el: any) => {
+        const elements = gsap.utils.toArray<HTMLElement>('.social-reveal');
+        elements.forEach((el) => {
           gsap.fromTo(el,
             { y: 30, opacity: 0 },
             {
@@ -96,7 +96,7 @@ export const SocialProof: React.FC = () => {
                 className={`social-reveal will-change-transform-opacity flex flex-col md:flex-row bg-dark-card border border-white/5 p-6 md:p-8 gap-6 md:gap-8 group transition-[border-color,box-shadow] duration-300 md:hover:border-gold/20 md:hover:gold-glow ${sideMargin}`}
               >
                 {/* Visual Image container with thick premium drop-shadow and gold metallic line */}
-                <div className="w-full md:w-[220px] h-[260px] flex-shrink-0 overflow-hidden bg-black border border-white/10 relative shadow-2xl select-none group-hover:border-gold/30 transition-all duration-500">
+                <div className="w-full aspect-[4/5] md:aspect-auto md:w-[220px] md:h-[260px] flex-shrink-0 overflow-hidden bg-black border border-white/10 relative shadow-2xl select-none group-hover:border-gold/30 transition-all duration-500">
                   <picture>
                     <img 
                       src={d.imgUrl} 
@@ -104,8 +104,8 @@ export const SocialProof: React.FC = () => {
                       className="w-full h-full object-cover md:grayscale-[20%] md:group-hover:grayscale-0 transition-transform duration-500 md:group-hover:scale-105"
                       loading="lazy"
                       decoding="async"
-                      width="220"
-                      height="260"
+                      width="640"
+                      height="800"
                     />
                   </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />

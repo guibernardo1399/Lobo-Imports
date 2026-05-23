@@ -63,7 +63,6 @@ export const Navbar: React.FC = () => {
               alt="Lobo"
               className="h-8 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
               loading="eager"
-              fetchPriority="high"
               width="40"
               height="40"
             />

@@ -48,6 +48,10 @@
     padding: 0;
   }
 
+  img {
+    image-rendering: auto;
+  }
+
   /* Custom high-end scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
@@ -135,6 +139,15 @@
   @media (min-width: 768px) {
     .will-change-transform-opacity {
       will-change: transform, opacity;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .gold-glow,
+    .gold-glow-intense,
+    .hover\:gold-glow:hover,
+    .hover\:gold-glow-intense:hover {
+      box-shadow: 0 0 24px -10px rgba(200, 155, 60, 0.24);
     }
   }
 }

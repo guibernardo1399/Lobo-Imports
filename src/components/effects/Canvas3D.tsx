@@ -43,8 +43,8 @@ export const Canvas3D: React.FC = () => {
     }
 
     // Rotations angles
-    let angleX = 0.003;
-    let angleY = 0.005;
+    const angleX = 0.003;
+    const angleY = 0.005;
 
     // Project 3D points to 2D
     const project = (point: Point3D) => {
@@ -127,7 +127,7 @@ export const Canvas3D: React.FC = () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isMobile]);
 
   if (isMobile) return null;
 

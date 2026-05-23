@@ -6,12 +6,14 @@ import { productsData } from '../../data/products';
 import { gsap } from '../../lib/gsap-setup';
 import { IMAGES } from '../../config/images';
 
+type CategoryId = 'all' | 'apple' | 'garmin' | 'games' | 'xiaomi-realme';
+
 export const Catalog: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'apple' | 'garmin' | 'games' | 'xiaomi-realme'>('all');
+  const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
 
-  const categories = [
+  const categories: { id: CategoryId; label: string }[] = [
     { id: 'all', label: 'Tudo' },
     { id: 'apple', label: 'Apple Pro' },
     { id: 'garmin', label: 'Garmin Sport' },
@@ -80,7 +82,7 @@ export const Catalog: React.FC = () => {
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id as any)}
+              onClick={() => setActiveCategory(cat.id)}
               className={`relative px-6 py-3 font-display text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 ${
                 activeCategory === cat.id
                   ? 'text-dark-deep bg-gold border border-gold gold-glow'
@@ -136,8 +138,8 @@ export const Catalog: React.FC = () => {
                           className="w-full h-full object-contain scale-[1.06] transition-transform duration-700 group-hover:scale-[1.12]"
                           loading="lazy"
                           decoding="async"
-                          width="500"
-                          height="500"
+                          width="640"
+                          height="640"
                         />
                       </picture>
                     </div>

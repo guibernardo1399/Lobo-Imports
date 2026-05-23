@@ -92,6 +92,8 @@ export const Footer: React.FC = () => {
                 alt="Lobos Imports" 
                 className="h-12 w-auto object-contain"
                 loading="lazy"
+                width="160"
+                height="160"
               />
               <div className="flex flex-col">
                 <span className="font-display text-xl font-black tracking-[0.2em] text-gold text-glow-gold uppercase">
