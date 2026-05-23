@@ -1,3 +1,5 @@
+import { IMAGES } from '../config/images';
+
 export interface Product {
   id: string;
   name: string;
@@ -18,7 +20,7 @@ export const productsData: Product[] = [
     description: 'O ápice da engenharia móvel com o revolucionário chip de 2nm. Chassi de titânio ultra leve e câmera periscópica avançada com zoom de alta definição.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/iphone_17_pro_max.jpg',
+    imageUrl: IMAGES.iphone17ProMax,
     tags: ['Titânio Deserto', 'Garantia Apple de 1 ano', 'Pronta Entrega'],
     specs: ['Chip A19 Pro', 'Nova Tela Super Retina XDR', 'Câmera Periscópio Avançada']
   },
@@ -26,10 +28,10 @@ export const productsData: Product[] = [
     id: 'iphone-16-pro-max',
     name: 'iPhone 16 Pro Max 256GB',
     category: 'apple',
-    description: 'A obra-prima da Apple com chassi reforçado em titânio grau 5. Nova tela de 6.9\" com bordas ultra-finas e botão de Controle de Câmera capacitivo.',
+    description: 'A obra-prima da Apple com chassi reforçado in titânio grau 5. Nova tela de 6.9\" com bordas ultra-finas e botão de Controle de Câmera capacitivo.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/iphone_16_pro_max.jpg',
+    imageUrl: IMAGES.iphone16ProMax,
     tags: ['Titânio Natural', 'Garantia Apple de 1 ano', 'Pronta Entrega'],
     specs: ['Chip A18 Pro', 'Tela Super Retina de 6.9"', 'Controle de Câmera Tátil']
   },
@@ -40,7 +42,7 @@ export const productsData: Product[] = [
     description: 'Design ultra-fino icônico com o poder extremo do novíssimo chip M5. Desempenho profissional silencioso e bateria impressionante para o dia inteiro.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/macbook_air_m5.jpg',
+    imageUrl: IMAGES.macbookAirM5,
     tags: ['Space Gray', 'Até 20h de Bateria', 'Garantia Global Apple'],
     specs: ['Chip Apple M5', '16GB de RAM Unificada', '512GB SSD Ultrarrápido']
   },
@@ -51,7 +53,7 @@ export const productsData: Product[] = [
     description: 'Portabilidade extrema e desempenho rápido com o chip M4. Estrutura de alumínio leve, silenciosa e com suporte integrado para inteligência artificial.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/macbook_air_m4.jpg',
+    imageUrl: IMAGES.macbookAirM4,
     tags: ['Estelar', '18h de Bateria', 'Design Silencioso'],
     specs: ['Chip Apple M4', 'Design Ultra Leve de 1.2kg', 'Suporte a Telas Externas']
   },
@@ -62,7 +64,7 @@ export const productsData: Product[] = [
     description: 'O relógio inteligente multiesporte definitivo com lente Power Sapphire para carregamento solar e bisel robusto em titânio. Mapas avançados integrados.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/garmin_fenix_8.jpg',
+    imageUrl: IMAGES.garminFenix8,
     tags: ['Carregamento Solar', 'GPS Multibanda', 'Resistente 100m'],
     specs: ['Luz de lanterna LED integrada', 'Sensor Cardíaco Gen 5', 'Tela AMOLED Colorida']
   },
@@ -73,7 +75,7 @@ export const productsData: Product[] = [
     description: 'O smartwatch de corrida e triatlo premium com tela colorida AMOLED brilhante de 1.4\". Métricas avançadas de treinamento para maximizar o seu rendimento.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/garmin_forerunner_965.jpg',
+    imageUrl: IMAGES.garminForerunner965,
     tags: ['Tela AMOLED', 'Bisel de Titânio', 'Mapas Coloridos'],
     specs: ['Até 23 dias de bateria', 'Dinâmicas de Corrida no Pulso', 'Status de VFC e Prontidão']
   },
@@ -84,7 +86,7 @@ export const productsData: Product[] = [
     description: 'Experimente carregamento ultra-rápido com um SSD de altíssima velocidade e feedback tátil incrível do controle DualSense.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/ps5_slim.jpg',
+    imageUrl: IMAGES.ps5Slim,
     tags: ['Leitor Físico', 'Controle DualSense', 'Garantia Oficial'],
     specs: ['SSD Especializado de 1TB', 'Resolução 4K a 120 FPS', 'Tecnologia HDR e Ray Tracing']
   },
@@ -95,7 +97,7 @@ export const productsData: Product[] = [
     description: 'O smartphone com as lentes óticas mais avançadas do mundo, co-desenvolvidas pela Leica. Sensor gigante de 1 polegada para fotos cinematográficas.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/xiaomi_14_ultra.jpg',
+    imageUrl: IMAGES.xiaomi14Ultra,
     tags: ['Lentes Leica Summilux', 'Carga Ultra de 90W', '512GB Interno'],
     specs: ['Processador Snapdragon 8 Gen 3', 'Sensor de Câmera de 1 Polegada', 'Tela AMOLED WQHD+ 120Hz']
   },
@@ -106,7 +108,7 @@ export const productsData: Product[] = [
     description: 'Design de luxo inspirado em relógios suíços finos, com traseira em couro vegano azul. Câmera retrato telefoto periscópica inédita na categoria.',
     price: 'Preço sob consulta',
     retailPrice: '',
-    imageUrl: '/assets/realme_12_pro.jpg',
+    imageUrl: IMAGES.realme12Pro,
     tags: ['Couro Vegano', 'Zoom Periscópio 120x', 'Tela Curva 120Hz'],
     specs: ['Traseira projetada por Ollivier Savéo', 'Câmera Periscópio Sony de 64MP', 'Carregamento SUPERVOOC 67W']
   }

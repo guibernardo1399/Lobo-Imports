@@ -3,6 +3,7 @@ import { MessageSquare, ShieldCheck, MapPin, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Canvas3D } from '../effects/Canvas3D';
 import { gsap } from '../../lib/gsap-setup';
+import { IMAGES } from '../../config/images';
 
 export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -83,7 +84,7 @@ export const Hero: React.FC = () => {
       {/* Massive Floating 3D Brand Watermark in the background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-[50vw] opacity-[0.03] blur-[1px] pointer-events-none select-none z-0">
         <img 
-          src="/assets/logo_full.png" 
+          src={IMAGES.logoFull} 
           alt="" 
           className="w-full h-auto object-contain animate-[float_8s_ease-in-out_infinite]"
           loading="lazy"
@@ -201,7 +202,7 @@ export const Hero: React.FC = () => {
               <div className="w-full h-[150px] sm:h-[180px] overflow-hidden rounded-xl bg-white p-3">
                 <picture>
                   <img 
-                    src="/assets/macbook_air_m5.jpg" 
+                    src={IMAGES.macbookAirM5} 
                     alt="MacBook Air M5"
                     className="w-full h-full object-contain scale-[1.06] grayscale-[20%] hover:grayscale-0 transition-all duration-500"
                     loading="eager"
@@ -219,7 +220,7 @@ export const Hero: React.FC = () => {
               <div className="w-full h-[180px] sm:h-[220px] overflow-hidden rounded-xl bg-white p-3">
                 <picture>
                   <img 
-                    src="/assets/iphone_17_pro_max.jpg" 
+                    src={IMAGES.iphone17ProMax} 
                     alt="iPhone 17 Pro Max"
                     className="w-full h-full object-contain scale-[1.06]"
                     loading="eager"
@@ -242,7 +243,7 @@ export const Hero: React.FC = () => {
             {/* Sutil Decorative Watermark Logo overlay at the background of stack */}
             <div className="stack-item absolute -bottom-12 -left-12 z-0 opacity-10 select-none pointer-events-none">
               <img 
-                src="/assets/logo_symbol.png" 
+                src={IMAGES.logoSymbol} 
                 alt="Lobos Imports emblem background" 
                 className="w-48 h-auto object-contain"
                 loading="lazy"

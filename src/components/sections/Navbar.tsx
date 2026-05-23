@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, MessageSquare } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { IMAGES } from '../../config/images';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,7 @@ export const Navbar: React.FC = () => {
           {/* Logo Brand */}
           <a href="#" className="flex items-center gap-3 group select-none">
             <img 
-              src="/assets/logo_symbol.png" 
+              src={IMAGES.logoSymbol} 
               alt="Lobo" 
               className="h-8 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
               loading="eager"

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { MessageSquare, Instagram, MapPin, Phone, ShieldCheck, ArrowUp } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { gsap } from '../../lib/gsap-setup';
+import { IMAGES } from '../../config/images';
 
 export const Footer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -81,7 +82,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-5 flex flex-col items-start gap-6">
             <a href="#" className="flex items-center gap-3 group">
               <img 
-                src="/assets/logo_symbol.png" 
+                src={IMAGES.logoSymbol} 
                 alt="Lobos Imports" 
                 className="h-12 w-auto object-contain"
                 loading="lazy"

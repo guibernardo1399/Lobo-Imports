@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { ShieldCheck, ShieldAlert, MessageSquare, Check, MapPin } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { gsap } from '../../lib/gsap-setup';
+import { IMAGES } from '../../config/images';
 
 export const SocialProof: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,22 +29,22 @@ export const SocialProof: React.FC = () => {
 
   const deliveries = [
     {
-      imgUrl: '/assets/delivery_1.jpg',
+      imgUrl: IMAGES.delivery1,
       city: 'Belém / PA',
       product: 'iPhone 16 Lacrado',
     },
     {
-      imgUrl: '/assets/delivery_3.jpg',
+      imgUrl: IMAGES.delivery3,
       city: 'Belém / PA',
       product: 'MacBook Air M4',
     },
     {
-      imgUrl: '/assets/delivery_2.jpg',
+      imgUrl: IMAGES.delivery2,
       city: 'Ananindeua / PA',
       product: 'iPhone 16 Pro Max',
     },
     {
-      imgUrl: '/assets/delivery_4.jpg',
+      imgUrl: IMAGES.delivery4,
       city: 'Belém / PA',
       product: 'PlayStation 5 Slim',
     }
@@ -158,7 +159,7 @@ export const SocialProof: React.FC = () => {
               <div className="w-[160px] h-[190px] overflow-hidden bg-black border-2 border-gold/30 shadow-2xl relative">
                 <picture>
                   <img 
-                    src="/assets/john_anderson.jpg" 
+                    src={IMAGES.johnAnderson} 
                     alt="John Anderson — Fundador" 
                     className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-500"
                     loading="lazy"

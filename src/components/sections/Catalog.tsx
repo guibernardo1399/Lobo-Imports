@@ -4,6 +4,7 @@ import { ShoppingBag, Check, Plus } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { productsData } from '../../data/products';
 import { gsap } from '../../lib/gsap-setup';
+import { IMAGES } from '../../config/images';
 
 export const Catalog: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'apple' | 'garmin' | 'games' | 'xiaomi-realme'>('all');
@@ -108,7 +109,7 @@ export const Catalog: React.FC = () => {
                 >
                   {/* Subtle Background wolf graphic on card hover */}
                   <div className="absolute -bottom-8 -right-8 w-32 h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none select-none">
-                    <img src="/assets/logo_symbol.png" alt="" className="w-full h-full object-contain" />
+                    <img src={IMAGES.logoSymbol} alt="" className="w-full h-full object-contain" />
                   </div>
 
                   <div>
@@ -196,7 +197,7 @@ export const Catalog: React.FC = () => {
           >
             {/* Gold watermark icon background */}
             <div className="absolute -bottom-8 -right-8 w-36 h-36 opacity-[0.02] group-hover:opacity-[0.04] transition-opacity duration-700 pointer-events-none select-none">
-              <img src="/assets/logo_symbol.png" alt="" className="w-full h-full object-contain" />
+              <img src={IMAGES.logoSymbol} alt="" className="w-full h-full object-contain" />
             </div>
 
             <div>
