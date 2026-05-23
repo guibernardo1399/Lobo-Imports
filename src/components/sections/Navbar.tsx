@@ -9,16 +9,26 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let raf = 0;
+    let lastState = false;
+
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const next = window.scrollY > 20;
+        if (next !== lastState) {
+          lastState = next;
+          setIsScrolled(next);
+        }
+        raf = 0;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   const navLinks = [
@@ -32,7 +42,7 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4 md:px-12 ${
+        className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12 ${
           isScrolled ? 'top-2 max-w-6xl mx-auto' : 'top-0 w-full'
         }`}
         initial={{ y: -100, opacity: 0 }}
@@ -40,9 +50,9 @@ export const Navbar: React.FC = () => {
         transition={{ duration: 1, ease: 'easeOut' }}
       >
         <div
-          className={`flex items-center justify-between px-6 py-3 transition-all duration-500 ${
-            isScrolled 
-              ? 'glass-card-gold rounded-full shadow-2xl py-2 px-6' 
+          className={`flex items-center justify-between px-6 py-3 transition-[background-color,border-color,border-radius,box-shadow] duration-300 ${
+            isScrolled
+              ? 'glass-card-gold rounded-full shadow-2xl py-2 px-6'
               : 'glass-nav rounded-none py-4 px-6 border-transparent'
           }`}
         >

@@ -111,7 +111,7 @@ export const Hero: React.FC = () => {
           
           {/* Subtle VIP Location Badge */}
           <div className="hero-reveal mb-6 inline-flex items-center gap-2 px-3 py-1.5 glass-card-gold rounded-full">
-            <MapPin size={12} className="text-gold animate-pulse" />
+            <MapPin size={12} className="text-gold md:animate-pulse" />
             <span className="font-body text-[10px] md:text-xs font-bold tracking-[0.2em] text-gold uppercase">
               Belém & Região Metropolitana
             </span>
@@ -154,7 +154,7 @@ export const Hero: React.FC = () => {
               href="#catalog" 
               className="group flex items-center justify-center gap-3 text-xs tracking-[0.25em] font-display font-semibold uppercase text-premium-white hover:text-gold transition-colors py-3"
             >
-              <Zap size={14} className="text-gold animate-bounce" />
+              <Zap size={14} className="text-gold md:animate-bounce" />
               Explorar Coleção
               <span className="w-8 h-[1px] bg-gold/50 transition-all duration-300 group-hover:w-16" />
             </a>
@@ -196,7 +196,7 @@ export const Hero: React.FC = () => {
         <div ref={rightColRef} className="lg:col-span-5 relative flex justify-center items-center h-[500px] lg:h-[600px] w-full">
           {/* Background Gold Luxury Circle glow & 3D rotating canvas sphere */}
           <div className="stack-item absolute w-[90%] h-[90%] flex justify-center items-center pointer-events-none z-0">
-            <div className="absolute w-[80%] h-[80%] rounded-full border border-gold/10 flex justify-center items-center animate-pulse-slow">
+            <div className="absolute w-[80%] h-[80%] rounded-full border border-gold/10 flex justify-center items-center md:animate-pulse-slow">
               <div className="w-[85%] h-[85%] rounded-full border border-gold/5" />
             </div>
             <div className="absolute w-[300px] h-[300px] flex items-center justify-center opacity-65">

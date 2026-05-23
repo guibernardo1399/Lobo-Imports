@@ -9,6 +9,7 @@ import { IMAGES } from '../../config/images';
 export const Catalog: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'apple' | 'garmin' | 'games' | 'xiaomi-realme'>('all');
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
 
   const categories = [
     { id: 'all', label: 'Tudo' },
@@ -97,15 +98,16 @@ export const Catalog: React.FC = () => {
             {filteredProducts.map((product, index) => {
               const isEven = index % 2 === 0;
               const hoverEffect = isEven ? "hover:-translate-y-2" : "hover:translate-y-[-8px]";
+              const cardClass = `group relative bg-dark-card border border-white/5 p-6 flex flex-col justify-between transition-[border-color,box-shadow] duration-300 overflow-hidden ${hoverEffect} hover:border-gold/30 hover:gold-glow`;
 
               return (
                 <motion.div
                   key={product.id}
-                  initial={{ opacity: 0 }}
+                  initial={isMobile ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  exit={isMobile ? undefined : { opacity: 0 }}
                   transition={{ duration: 0.25 }}
-                  className={`group relative bg-dark-card border border-white/5 p-6 flex flex-col justify-between transition-[transform,border-color,box-shadow] duration-300 overflow-hidden ${hoverEffect} hover:border-gold/30 hover:gold-glow`}
+                  className={cardClass}
                 >
                   {/* Subtle Background wolf graphic on card hover */}
                   <div className="absolute -bottom-8 -right-8 w-32 h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none select-none">

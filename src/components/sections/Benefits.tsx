@@ -139,7 +139,7 @@ export const Benefits: React.FC = () => {
 
                 {/* Highlight banner (Concreteness visual anchor) */}
                 <div className="flex items-center gap-3 pt-4 border-t border-white/5 mt-auto">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                   <span className="font-display text-[9px] tracking-[0.2em] font-extrabold uppercase text-gold">
                     {b.highlight}
                   </span>

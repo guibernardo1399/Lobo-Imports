@@ -73,7 +73,7 @@ export const SocialProof: React.FC = () => {
         
         {/* Title Block */}
         <div className="flex flex-col items-start text-left mb-20">
-          <span className="social-reveal block text-[10px] tracking-[0.3em] font-display font-extrabold text-gold uppercase mb-3 animate-pulse">
+          <span className="social-reveal block text-[10px] tracking-[0.3em] font-display font-extrabold text-gold uppercase mb-3">
             Entregas VIP em Belém
           </span>
           <h2 className="social-reveal font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-premium-white tracking-tighter leading-none select-none">
@@ -116,7 +116,7 @@ export const SocialProof: React.FC = () => {
                   <div className="flex flex-col items-start gap-4">
                     {/* Location Badge */}
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/25 text-gold text-[10px] font-bold tracking-[0.2em] uppercase">
-                      <MapPin size={10} className="animate-pulse" />
+                      <MapPin size={10} />
                       {d.city}
                     </div>
 
@@ -193,7 +193,7 @@ export const SocialProof: React.FC = () => {
             <div className="md:col-span-8 flex flex-col justify-between items-start gap-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <ShieldAlert size={14} className="text-gold animate-pulse" />
+                  <ShieldAlert size={14} className="text-gold" />
                   <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-gold uppercase">Compromisso com Você</span>
                 </div>
                 <h3 className="font-display text-xl font-bold uppercase text-premium-white leading-snug mb-3">

@@ -14,15 +14,13 @@ import { ScrollTrigger } from './lib/gsap-setup';
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Refresh ScrollTrigger to calculate correct offsets after DOM and images render
+    if (window.matchMedia('(max-width: 767px)').matches) return;
+
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 800);
 
-    const handleLoad = () => {
-      ScrollTrigger.refresh();
-    };
-
+    const handleLoad = () => { ScrollTrigger.refresh(); };
     window.addEventListener('load', handleLoad);
 
     return () => {
@@ -46,7 +44,7 @@ const App: React.FC = () => {
         aria-label="Chamar no WhatsApp"
       >
         {/* Pulsing visual outer rings */}
-        <div className="absolute inset-0 rounded-full bg-gold/30 animate-ping pointer-events-none" />
+        <div className="absolute inset-0 rounded-full bg-gold/30 md:animate-ping pointer-events-none" />
         <MessageSquare size={22} className="stroke-[2.5]" />
       </a>
 

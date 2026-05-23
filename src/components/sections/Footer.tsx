@@ -12,23 +12,29 @@ export const Footer: React.FC = () => {
   };
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo('.footer-reveal', 
-        { y: 30, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.footer-reveal',
-            start: 'top 90%',
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15
-        }
-      );
-    }, containerRef);
+    const mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        gsap.fromTo('.footer-reveal',
+          { y: 30, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: '.footer-reveal',
+              start: 'top 82%',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.15
+          }
+        );
+      }, containerRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -37,7 +43,7 @@ export const Footer: React.FC = () => {
       className="relative w-full bg-black pt-24 pb-12 px-6 md:px-12 overflow-hidden border-t border-white/5"
     >
       {/* Decorative ambient glowing lights */}
-      <div className="absolute bottom-0 left-1/4 w-[40vw] h-[40vw] rounded-full bg-gold/5 blur-[160px] pointer-events-none" />
+      <div className="hidden md:block absolute bottom-0 left-1/4 w-[40vw] h-[40vw] rounded-full bg-gold/5 blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full z-10 relative">
         

@@ -1,10 +1,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register the ScrollTrigger plugin once globally
-gsap.registerPlugin(ScrollTrigger);
+const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
 
-// Set default ease globally for premium smooth feeling
+if (isDesktop) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 gsap.defaults({
   ease: 'power3.out',
   duration: 1.2
